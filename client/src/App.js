@@ -13,7 +13,7 @@ function App() {
     setResult(null);
 
     try {
-      const res = await axios.post("http://localhost:5000/check-api", {
+      const res = await axios.post("check-api", {
         url,
         method,
       });
