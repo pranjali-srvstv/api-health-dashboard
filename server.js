@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
@@ -34,7 +35,11 @@ app.post("/check-api", async (req, res) => {
     });
   }
 });
+app.use(express.static(path.join(__dirname, "client/build")));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
